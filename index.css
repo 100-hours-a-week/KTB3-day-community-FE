@@ -1,0 +1,44 @@
+body {
+    height: 100vh;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    
+    background-image: url("assets/image/landingPage.png");
+    background-size: cover;      
+    background-position: center;  
+    background-repeat: no-repeat;  
+
+    font-family: "Noto Sans KR", sans-serif;
+    margin: 0;
+    color: white;
+  }  
+
+.center-box {
+    display: flex;
+    justify-content: center;
+    flex-direction: column;
+    align-items: center;
+    height: 100vh;
+}
+
+.center-box h1 {
+    font-size: 4rem;
+    color: #fff;
+    margin-bottom: 1.5rem;
+  }
+
+.center-box button {
+    background-color: #9066af;
+    color: white;
+    font-size: 1.5rem;
+    padding: 0.5rem 1rem;
+    border: none;
+    border-radius: 7px;
+    cursor: pointer;
+    transition: background-color 0.2s ease;
+}
+
+.center-box button:active {
+    background-color: #7a52a1;
+}
