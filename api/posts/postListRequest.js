@@ -1,0 +1,26 @@
+const API_URL = "http://localhost:8080/posts?size=5";
+
+export async function fetchPosts(cursorId) {
+    try {
+        const url = new URL(API_URL);
+        if (cursorId != null) url.searchParams.set("lastSeenId", String(cursorId));
+
+        const res = await fetch(url, {
+            method: "GET",
+            headers: {
+                "Accept" : "application/json",
+            },
+        });
+
+        const json = await res.json();
+
+        const contents = json?.data?.items ?? json?.items ?? json?.contents ?? [];
+        const hasNext  = json?.data?.hasNext ?? json?.hasNext ?? false;
+        const nextCursorId = json?.data?.nextCursorId ?? null;
+
+        return {contents, hasNext, nextCursorId};
+    } catch (err) {
+        console.error(err);
+        return {contents: [], hasNext: false, nextCursorId};
+    }
+}
