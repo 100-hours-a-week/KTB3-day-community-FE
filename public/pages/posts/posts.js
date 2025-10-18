@@ -35,3 +35,9 @@ document.addEventListener("DOMContentLoaded", async () => {
     window.addEventListener("scroll", onScrollLoadMore, { passive : true });
     
 })
+
+const button = document.querySelector("button");
+
+button.addEventListener("click", () => {
+  window.location.href = "./post-create.html";
+});
