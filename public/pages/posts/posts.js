@@ -1,13 +1,13 @@
-const API_URL = "http://localhost:8080/posts?size=10";
+const API_URL = "http://localhost:8080/posts?size=5";
 
 let cursorId = null;
 let hasNextGlobal = true;
 let isLoading = false;
 
-async function fetchPosts({ lastSeenId } = {}) {
+async function fetchPosts() {
     try {
         const url = new URL(API_URL);
-        if (lastSeenId != null) url.searchParams.set("lastSeenId", String(lastSeenId));
+        if (cursorId != null) url.searchParams.set("lastSeenId", String(cursorId));
 
         const res = await fetch(url, {
             method: "GET",
@@ -22,10 +22,10 @@ async function fetchPosts({ lastSeenId } = {}) {
         const hasNext  = json?.data?.hasNext ?? json?.hasNext ?? false;
         const nextCursorId = json?.data?.nextCursorId ?? null;
 
-        return {contents, hasNext};
+        return {contents, hasNext, nextCursorId};
     } catch (err) {
         console.error(err);
-        return {contents: [], hasNext: false};
+        return {contents: [], hasNext: false, nextCursorId};
     }
 }
 
@@ -88,12 +88,33 @@ function createPostCard(post = {}) {
 
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    const { contents, hasNext } = await fetchPosts();
+async function loadMore() {
+    if (isLoading || !hasNextGlobal) return;
+    isLoading = true;
 
+    const { contents, hasNext, nextCursorId } = await fetchPosts();
     console.log(contents);
+    console.log(nextCursorId);
 
     const feed = document.querySelector(".feed");
-    contents.forEach(p => feed.appendChild(createPostCard(p)));
+    if (Array.isArray(contents) && contents.length > 0){
+        contents.forEach(p => feed.appendChild(createPostCard(p)));
+    }
+
+    cursorId = nextCursorId;
+    hasNextGlobal = !!hasNext;
+
+    isLoading = false;
+}
+
+function onScrollLoadMore() {
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight + 20;
+    if (nearBottom) loadMore();
+}
+
+document.addEventListener("DOMContentLoaded", async () => {
+    await loadMore();
+
+    window.addEventListener("scroll", onScrollLoadMore, { passive : true });
     
 })
