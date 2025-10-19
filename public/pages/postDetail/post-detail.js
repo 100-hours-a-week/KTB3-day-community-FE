@@ -1,4 +1,5 @@
 import { fetchPostDetail } from "../../../api/posts/postDetailRequest.js";
+import { deletePosts } from "../../../api/posts/postDeleteRequest.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const postId = urlParams.get("id");
@@ -52,5 +53,23 @@ modifybtn.addEventListener("click", () => {
         window.location.href = `../postCreate/post-create.html?mode=modify&id=${encodeURIComponent(postId)}`;
     } else {
         alert("수정 권한이 없습니다! (본인만 수정가능)");
+    }
+})
+
+const deletebtn = document.getElementById("delete-btn");
+deletebtn.addEventListener("click", async () => {
+    if (authorized){
+        const ok = window.confirm("댓글을 삭제하시겠습니까?\n삭제한 내용은 복구할 수 없습니다.");
+        if (ok) {
+            const result = await deletePosts(postId);
+            if (result == 1){
+                alert("삭제가 완료되었습니다!");
+                window.location.href = `../posts/posts.html`;        
+            } else {
+                alert("삭제에 실패했습니다.");
+            }
+        }
+    } else {
+        alert("삭제 권한이 없습니다! (본인만 삭제가능)");
     }
 })
