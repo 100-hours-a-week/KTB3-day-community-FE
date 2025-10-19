@@ -25,7 +25,7 @@ export function createPostCard(post = {}) {
     const replies = post.replyCount;
     const views = post.viewCount;
 
-    const article = el("article", { className: "post-card", attrs: { role: "article" } });
+    const article = el("article", { className: "post-card", attrs: { role: "article" , "post-id": post.postId, }, });
 
     const head = el("div", { className: "post-card__head" });
     const h2 = el("h2", { className: "post-card__title", text: title });

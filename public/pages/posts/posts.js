@@ -29,6 +29,18 @@ function onScrollLoadMore() {
     if (nearBottom) loadMore();
 }
 
+function onFeedClick(e) {
+    const card = e.target.closest(".post-card");
+    if (!card) return;
+
+    const postId = card.getAttribute("post-id");
+    console.log(postId);
+    if (!postId) return;
+
+    window.location.href = `./post-detail.html?id=${encodeURIComponent(postId)}`;
+}
+
+
 document.addEventListener("DOMContentLoaded", async () => {
     await loadMore();
 
@@ -41,3 +53,6 @@ const button = document.querySelector("button");
 button.addEventListener("click", () => {
   window.location.href = "./post-create.html";
 });
+
+const feed = document.querySelector(".feed");
+feed.addEventListener("click", onFeedClick);
