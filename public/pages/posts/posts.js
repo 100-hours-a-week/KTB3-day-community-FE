@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 const button = document.querySelector("button");
 
 button.addEventListener("click", () => {
-  window.location.href = "../postCreate/post-create.html";
+  window.location.href = "../postCreate/post-create.html?mode=create";
 });
 
 const feed = document.querySelector(".feed");
