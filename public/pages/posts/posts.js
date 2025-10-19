@@ -37,7 +37,7 @@ function onFeedClick(e) {
     console.log(postId);
     if (!postId) return;
 
-    window.location.href = `./post-detail.html?id=${encodeURIComponent(postId)}`;
+    window.location.href = `../postDetail/post-detail.html?id=${encodeURIComponent(postId)}`;
 }
 
 
@@ -51,7 +51,7 @@ document.addEventListener("DOMContentLoaded", async () => {
 const button = document.querySelector("button");
 
 button.addEventListener("click", () => {
-  window.location.href = "./post-create.html";
+  window.location.href = "../postCreate/post-create.html";
 });
 
 const feed = document.querySelector(".feed");

@@ -32,5 +32,5 @@ document.addEventListener("DOMContentLoaded", async () => {
 
 const backbtn = document.getElementById("backBtn");
 backbtn.addEventListener("click", () => {
-    window.location.href = "./posts.html";
+    window.location.href = "../posts/posts.html";
 })
