@@ -1,7 +1,10 @@
-import { createUsers } from "../../../api/login/userCreateRequest.js";
-import { getURL } from "../../../api/login/userImageUrlRequest.js";
-import { checkEmail } from "../../../api/login/userEmailCheckRequest.js";
-import { checkNickname } from "../../../api/login/userNicknameCheckRequest.js";
+import { createUsers } from "../../../api/signup/userCreateRequest.js";
+import { getURL } from "../../../api/signup/userImageUrlRequest.js";
+import { checkEmail } from "../../../api/signup/userEmailCheckRequest.js";
+import { checkNickname } from "../../../api/signup/userNicknameCheckRequest.js";
+import { mountHeader } from "../../component/header.js";
+
+await mountHeader({ hideBack:false, hideAvatar:true, avatarSrc:null });
 
 const loginBtn = document.getElementById("login-btn");
 const signupBtn = document.getElementById("signup-btn");
