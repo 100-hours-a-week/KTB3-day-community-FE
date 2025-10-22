@@ -1,5 +1,11 @@
-const button = document.querySelector("button");
+const loginBtn = document.querySelector("button");
 
-button.addEventListener("click", () => {
+loginBtn.addEventListener("click", () => {
   window.location.href = "/public/pages/posts/posts.html";
 });
+
+const signupBtn = document.getElementById("signup-btn");
+
+signupBtn.addEventListener("click", () => {
+  window.location.href = "/public/pages/signup/signup.html";
+})
