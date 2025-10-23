@@ -10,6 +10,7 @@ export async function fetchPosts(cursorId) {
             headers: {
                 "Accept" : "application/json",
             },
+            credentials: "include",
         });
 
         const json = await res.json();

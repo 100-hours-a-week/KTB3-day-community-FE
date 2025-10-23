@@ -14,7 +14,8 @@ export async function createPosts(title, content, imageUrl) {
                 title: title,
                 content: content,
                 imageUrl: imageUrl
-            })
+            }),
+            credentials: "include",
         });
 
         const json = await res.json();

@@ -8,6 +8,7 @@ export async function fetchPostDetail(postId) {
             method: "GET",
             headers: {
                 "Accept" : "application/json",
+                credentials: "include",
             },
         });
 

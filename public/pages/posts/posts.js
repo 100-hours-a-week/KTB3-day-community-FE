@@ -1,5 +1,6 @@
 import { fetchPosts } from "../../../api/posts/postListRequest.js";
 import { createPostCard } from "./component/postcard.js";
+import { mountHeader } from "../../component/header.js";
 
 let cursorId = null;
 let hasNextGlobal = true;
@@ -42,6 +43,8 @@ function onFeedClick(e) {
 
 
 document.addEventListener("DOMContentLoaded", async () => {
+    const imageUrl = sessionStorage.getItem("profileImg");
+    await mountHeader({ hideBack:true, hideAvatar:false, avatarSrc:imageUrl });
     await loadMore();
 
     window.addEventListener("scroll", onScrollLoadMore, { passive : true });

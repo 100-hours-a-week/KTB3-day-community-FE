@@ -10,6 +10,7 @@ export async function deletePosts(postId) {
                 "Accept" : "application/json",
                 "Content-Type" : "application/json",
             },
+            credentials: "include",
         });
         
         return 1;
