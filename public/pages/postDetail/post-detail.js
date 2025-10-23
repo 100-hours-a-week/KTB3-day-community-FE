@@ -1,5 +1,6 @@
 import { fetchPostDetail } from "../../../api/posts/postDetailRequest.js";
 import { deletePosts } from "../../../api/posts/postDeleteRequest.js";
+import { mountHeader } from "../../component/header.js";
 
 const urlParams = new URLSearchParams(window.location.search);
 const postId = urlParams.get("id");
@@ -28,6 +29,7 @@ async function fillContents(postId) {
     document.getElementById('likes-count').textContent = likeCount;
     document.getElementById('views-count').textContent = visitCount;
     document.getElementById('comments-count').textContent = replyCount;
+    document.getElementById("writer-profile").src = writerImage;
 
     // 혹시 modify 버튼을 누른다면, 해당 정보들을 다음 화면에 넘겨줘야 함.
     payload = {
@@ -37,9 +39,10 @@ async function fillContents(postId) {
 
 }
 
-document.addEventListener("DOMContentLoaded", async () => {
-    await fillContents(postId);    
-})
+const imageUrl = sessionStorage.getItem("profileImg");
+await mountHeader({ hideBack:false, hideAvatar:false, avatarSrc:imageUrl });
+await fillContents(postId);  
+
 
 const backbtn = document.getElementById("backBtn");
 backbtn.addEventListener("click", () => {

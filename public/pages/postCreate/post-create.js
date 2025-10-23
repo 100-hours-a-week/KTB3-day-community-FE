@@ -1,6 +1,9 @@
 import { renderCreate } from "./create.js";
 import { renderModify } from "./modify.js";
+import { mountHeader } from "../../component/header.js";
 
+const imageUrl = sessionStorage.getItem("profileImg");
+await mountHeader({ hideBack:false, hideAvatar:false, avatarSrc:imageUrl });
 
 const backbtn = document.getElementById("backBtn");
 

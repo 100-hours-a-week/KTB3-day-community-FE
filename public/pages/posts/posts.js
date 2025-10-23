@@ -26,7 +26,7 @@ async function loadMore() {
 }
 
 function onScrollLoadMore() {
-    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight + 20;
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight + 70;
     if (nearBottom) loadMore();
 }
 
