@@ -13,16 +13,23 @@ export async function login(email, password) {
             body: JSON.stringify({
                 email: email,
                 password: password
-            })
+            }),
+            credentials: "include",
         });
         const json = await res.json();
 
         const message = json?.message ?? [];
+        const data = json?.data ?? null;
 
+        console.log(data);
         console.log(message);
 
-        if (message == "login failed"){return false;}
-        else{return true;}
+        if (data == null){return false;}
+        else{
+            sessionStorage.setItem("nickname", data?.nickname ?? "");
+            sessionStorage.setItem("profileImg", data?.profileImage ?? "");
+            return true;
+        }
 
     } catch (err) {
         console.error(err);

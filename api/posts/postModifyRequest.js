@@ -14,7 +14,8 @@ export async function modifyPosts(title, content, imageUrl, postId) {
                 title: title,
                 content: content,
                 imageUrl: imageUrl
-            })
+            }),
+            credentials: "include",
         });
 
         const json = await res.json();

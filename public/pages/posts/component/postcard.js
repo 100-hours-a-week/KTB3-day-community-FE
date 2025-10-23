@@ -46,7 +46,7 @@ export function createPostCard(post = {}) {
 
     const foot = el("div", { className: "post-card__foot" });
     const authorBox = el("div", { className: "post-card__author" });
-    const avatar = el("div", { className: "post-card__avatar", attrs: { "aria-hidden": "true" } });
+    const avatar = el("img", { className: "post-card__avatar", attrs: { src: userImage } });
     const authorStrong = el("strong", { attrs: { "data-field": "author" }, text: nickname });
     authorBox.append(avatar, authorStrong);
     foot.append(authorBox);
