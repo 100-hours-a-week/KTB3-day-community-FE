@@ -1,0 +1,22 @@
+{
+  "name": "ktb-fe",
+  "version": "1.0.0",
+  "description": "KTB 3기 클라우드 과정 - 커뮤니티 구축 개인프로젝트 (FrontEnd) - day.hong(홍대의)",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1"
+  },
+  "repository": {
+    "type": "git",
+    "url": "git+https://github.com/HongDay/KTB3-day-community-FE.git"
+  },
+  "author": "",
+  "license": "ISC",
+  "bugs": {
+    "url": "https://github.com/HongDay/KTB3-day-community-FE/issues"
+  },
+  "homepage": "https://github.com/HongDay/KTB3-day-community-FE#readme",
+  "dependencies": {
+    "express": "^5.1.0"
+  }
+}

@@ -130,8 +130,9 @@ signupBtn.addEventListener("click", async () => {
     const formData = new FormData();
     formData.append("img", file);
     const imageUrl = await getURL(formData); // 서버에 저장하고 그 경로를 받는 API -> S3 URL 받아와서 거기에 업로드하는 API 변경예정
-    if (!imageUrl) {
+    if (!imageUrl || imageUrl==-1) {
         alert("사진이 서버로 제대로 전송되지 않았습니다.");
+        return;
     }
 
     const userId = await createUsers(email, password, nickname, imageUrl);
