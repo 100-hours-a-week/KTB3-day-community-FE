@@ -1,5 +1,6 @@
 import { fetchPosts } from "../../../api/posts/postListRequest.js";
 import { createPostCard } from "./component/postcard.js";
+import { mountHeader } from "../../component/header.js";
 
 let cursorId = null;
 let hasNextGlobal = true;
@@ -25,7 +26,7 @@ async function loadMore() {
 }
 
 function onScrollLoadMore() {
-    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight + 20;
+    const nearBottom = window.innerHeight + window.scrollY >= document.body.offsetHeight + 70;
     if (nearBottom) loadMore();
 }
 
@@ -42,6 +43,8 @@ function onFeedClick(e) {
 
 
 document.addEventListener("DOMContentLoaded", async () => {
+    const imageUrl = sessionStorage.getItem("profileImg");
+    await mountHeader({ hideBack:true, hideAvatar:false, avatarSrc:imageUrl });
     await loadMore();
 
     window.addEventListener("scroll", onScrollLoadMore, { passive : true });

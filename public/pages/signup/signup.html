@@ -1,0 +1,71 @@
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>아무말 대잔치 : 로그인</title>
+    <link rel="stylesheet" href="signup.css">
+</head>
+<body>
+
+    <div class = "center-box">
+        <h1>회원가입</h1>
+
+        <section id="profile-image-section">
+            <input
+            id="profile-image"
+            name="profile"
+            type="file"
+            accept="image/*"
+            hidden
+            />
+            <label for="profile-image">
+                프로필 사진
+                <figure id="profile-image-preview">
+                    <img id="profile-img" hidden />
+                    <figcaption id="profile-image-caption">+</figcaption>
+                </figure>
+                <p class = "helper" id="image-helper"></p>
+            </label>
+        </section>
+
+        <section class="box">
+            <div>
+                <label for="email">이메일*</label>
+                <input type="email" id="email" name="email" placeholder="이메일을 입력하세요">
+                <p class ="helper" id="email-helper"></p>
+            </div>
+    
+            <div>
+                <label for="password">비밀번호*</label>
+                <input type="password" id="password" name="password" placeholder="비밀번호를 입력하세요">
+                <p class ="helper" id="password-helper"></p>
+            </div>
+
+            <div>
+                <label for="passwordChk">비밀번호 확인*</label>
+                <input type="password" id="passwordChk" name="passwordChk" placeholder="비밀번호를 한번 더 입력하세요">
+                <p class ="helper" id="passwordChk-helper"></p>
+            </div>
+
+            <div>
+                <label for="nickname">닉네임*</label>
+                <input type="text" id="nickname" name="nickname" placeholder="닉네임을 입력하세요">
+                <p class ="helper" id="nickname-helper"></p>
+            </div>
+
+            <div>
+                <button id="signup-btn">회원가입</button>
+            </div>
+
+            <div>
+                <p id="login-btn">로그인하러 가기</p>
+            </div>
+        </section>
+
+        
+    </div>
+    
+    <script type="module" src="signup.js"></script>
+
+</body>
+</html>

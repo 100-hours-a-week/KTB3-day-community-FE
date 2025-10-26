@@ -9,6 +9,7 @@ export async function fetchPostDetail(postId) {
             headers: {
                 "Accept" : "application/json",
             },
+            credentials: "include",
         });
 
         if (!res.ok) throw new Error("HTTP error " + res.status);
